@@ -1,0 +1,45 @@
+Angry Birds - SassyShoot
+
+We have divided the work into three parts depending on the type of bird that is present on the sling. As the target and the angle of shoot is variant depending upon the bird,target pair. So the computation by our bot is reduced if we proceed according to the bird type.
+
+Strategy according to the bird type is as follows.
+
+Red Bird:
+
+First of all ,we collect a set of candidate points which can be hit. 
+Class ShootingPriority has a function named priority which returns the same list.
+The pigs which have got wooden block as supporter returns the centre of block ,else centre of that pig is selected.
+After getting this list, for each point in the list we select the trajectory following angle less than 45 degree then,following are calculated :
+ice obstacles
+wood obstacles
+stone obstacles
+hills
+If hill is present in any trajectory then, the shot is made with the upper trajectory instead.
+Otherwise, total obstacles in a trajectory is calculated (wood + ice + stones )
+And after that all the trajectories are compared, one having the least obstacles is given the chance to be followed.
+
+Blue Bird
+
+For a blue bird the target is different from the red bird as its capability of destruction is different. So for a blue bird we prefer ice in the trajectory in place of any other obstacle. And we would want to avoid the stones in any case.
+
+First the highest pig is selected as the target by the bot.
+Then we would see if there are any ice blocks in the way.
+The default is the upper trajectory with the tap time of 80% of the trajectory.
+
+Selecting a default trajectory with the larger angle and foreseeing which is a better trajectory for the selected case by comparing the other trajectories depending upon the obstacles that come in the way and also if there is ice above or below the initial target.
+
+If there comes a stone in the initial trajectory then the other trajectory is selected.
+And if there is ice below the target and not above then the lower trajectory is selected.
+If the lower trajectory is selected then tap time is greater than the one for the higher trajectory.
+
+
+
+
+
+
+Yellow birds:
+
+For yellow bird,the left lowermost pig is selected .Because on destructing lower pig , it also simultaneously destruct pigs above it , if it is connected. Yellow bird gives better performance for low trajectory .All the wood objects are considered initially as an obstacles around the pig. If wood is present at left or below the pig, then it is given first priority for targeting as wood gets easily destructed. If there are no wood obstacles surrounding the pig , it would choose lower trajectory. The lower trajectory is always selected unless stone is present as an obstacle on the path.The yellow bird is incapable of destroying stones so, if stone is on the lower trajectory  than higher trajectory is selected for shooting the pig. The tap interval for lower trajectory is 75% whereas if the higher trajectory go selected default tap interval is 85%. 
+
+TOTAL: 923540
+
